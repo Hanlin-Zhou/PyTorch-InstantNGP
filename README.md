@@ -1,5 +1,5 @@
 # PyTorch-InstantNGP
-PyTorch Implementation of NVIDIA's [InstantNGP](https://github.com/NVlabs/instant-ngp)
+PyTorch Implementation of NVIDIA's [Instant-NGP](https://github.com/NVlabs/instant-ngp)
 ```bibtex
 @article{mueller2022instant,
     author = {Thomas M\"uller and Alex Evans and Christoph Schied and Alexander Keller},
