@@ -19,6 +19,4 @@ PyTorch Implementation of NVIDIA's [Instant-NGP](https://github.com/NVlabs/insta
     address = {New York, NY, USA},
 }
 ```
-All setting in config.yaml
-
-Currently only supporting 2D Image. Adding NeRF soon
+All setting in config yaml file.
