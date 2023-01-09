@@ -5,8 +5,11 @@ import yaml
 
 def get_parser():
     parser = argparse.ArgumentParser(description='ArgParser for InstantNGP Implementation CSC419')
+    parser.add_argument('--config_path', type=str, help='path of yaml')
 
     file_group = parser.add_argument_group('File')
+    file_group.add_argument('--task_type', type=str, help='image or nerf')
+    file_group.add_argument('--task_title', type=str, help='task title')
     file_group.add_argument('--result_directory', type=str, help='path to result folder')
     file_group.add_argument('--source_directory', type=str, help='path to source')
 
@@ -21,6 +24,7 @@ def get_parser():
     decoder_group = parser.add_argument_group('Decoder')
     decoder_group.add_argument('--input_dim', type=int, help='number input dimension')
     decoder_group.add_argument('--output_dim', type=int, help='number output dimension')
+    decoder_group.add_argument('--view_encoding_degree', type=int, help='degree of SH')
     decoder_group.add_argument('--activation', type=str, help='which activation function')
     decoder_group.add_argument('--last_activation', type=str, help='which activation function for out layer')
     decoder_group.add_argument('--bias', type=bool, help='should use bias')
@@ -28,10 +32,12 @@ def get_parser():
     decoder_group.add_argument('--hidden_dim', type=str, help='width of hidden layer')
 
     trainer_group = parser.add_argument_group('Trainer')
+    trainer_group.add_argument('--render_pose_id', type=int, help='Id of Pose for render', default=0)
     trainer_group.add_argument('--num_epoch', type=int, help='number of epoch')
     trainer_group.add_argument('--batch_size', type=int, help='batch size')
     trainer_group.add_argument('--range_clamping', type=bool, help='Do training in [0, 1] space or [0, 255] space')
     trainer_group.add_argument('--save_every', type=int, help='save every how many epoch')
+    trainer_group.add_argument('--save_gt', type=bool, help='save ground truth')
     trainer_group.add_argument('--log_every', type=int, help='log every how many epoch')
     trainer_group.add_argument('--learning_rate', type=float, help='learning rate of Adam')
     trainer_group.add_argument('--beta1', type=tuple, help='beta1 for Adam')
@@ -69,8 +75,8 @@ def parser_from_yaml(parser, yaml_path):
 def parse_arg_from_yaml(yaml_path='./config.yaml'):
     if len(sys.argv) == 1:
         yaml_path = './config.yaml'
-    elif len(sys.argv) == 2:
-        yaml_path = sys.argv[1]
+    elif len(sys.argv) == 3:
+        yaml_path = sys.argv[2]
     else:
         print("usage: main.py [path to yaml config file]")
         quit()
