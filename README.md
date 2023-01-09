@@ -19,4 +19,29 @@ PyTorch Implementation of NVIDIA's [Instant-NGP](https://github.com/NVlabs/insta
     address = {New York, NY, USA},
 }
 ```
-All setting in config yaml file.
+-------------
+
+<img src="assets\nerf.gif" />
+
+### Requirement
+
+* Python 3.7
+* Pytorch witch cuda (tested with 1.12.1)
+* opencv
+* imageio
+* shutil
+* tqdm
+* nerfacc
+
+### Usage: NeRF
+```sh
+PyTorch-InstantNGP> main.py --config_path nerf_config.yaml
+```
+Download Lego Nerf dataset from [here](https://drive.google.com/drive/folders/1lrDkQanWtTznf48FCaW5lX9ToRdNDF1a)
+
+### Usage: Image
+```sh
+PyTorch-InstantNGP> main.py --config_path image_config.yaml
+```
+
+All settings in config yaml file.
